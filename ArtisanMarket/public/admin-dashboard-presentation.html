@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - ArtisanMarket</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+        }
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+        .status {
+            background: #10b981;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        .feature {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .feature h3 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        .feature ul {
+            list-style: none;
+        }
+        .feature li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        .feature li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #10b981;
+        }
+        .tech-stack {
+            background: #f3f4f6;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        .tech-stack h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .tech-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        .tech-item strong {
+            color: #667eea;
+        }
+        .links {
+            background: #eff6ff;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        .links h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        .link-item {
+            padding: 10px 0;
+            font-size: 1.1em;
+        }
+        .link-item a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .link-item a:hover {
+            text-decoration: underline;
+        }
+        .credentials {
+            background: #fef3c7;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #f59e0b;
+        }
+        .credentials h2 {
+            color: #d97706;
+            margin-bottom: 15px;
+        }
+        .cred-item {
+            padding: 8px 0;
+            font-family: monospace;
+            font-size: 1.1em;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 25px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .stat-card .number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .stat-card .label {
+            color: #666;
+            margin-top: 10px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            padding-top: 20px;
+            border-top: 2px solid #e5e7eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Dashboard Admin - ArtisanMarket</h1>
+        <p class="subtitle">Système de gestion complet avec Livewire 4</p>
+        
+        <div style="text-align: center;">
+            <span class="status">✅ Opérationnel</span>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number">3</div>
+                <div class="label">Composants Livewire</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">10</div>
+                <div class="label">Routes Admin</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">6</div>
+                <div class="label">Tables BDD</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">100%</div>
+                <div class="label">Responsive</div>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <h3>📊 Dashboard Statistiques</h3>
+                <ul>
+                    <li>4 cards de métriques</li>
+                    <li>Filtres par période (7j, 30j, tout)</li>
+                    <li>Commandes récentes</li>
+                    <li>Top 5 produits populaires</li>
+                    <li>Design avec gradients</li>
+                </ul>
+            </div>
+
+            <div class="feature">
+                <h3>👥 Validation Artisans</h3>
+                <ul>
+                    <li>Recherche en temps réel</li>
+                    <li>Filtres par statut</li>
+                    <li>Approuver/Rejeter</li>
+                    <li>Pagination intelligente</li>
+                    <li>Notifications toast</li>
+                </ul>
+            </div>
+
+            <div class="feature">
+                <h3>🛍️ Modération Produits</h3>
+                <ul>
+                    <li>Grille responsive</li>
+                    <li>Filtres catégorie + statut</li>
+                    <li>Publier/Masquer</li>
+                    <li>Mettre en vedette</li>
+                    <li>Aperçu image</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tech-stack">
+            <h2>🛠️ Stack Technique</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <strong>Backend</strong><br>
+                    Laravel 11<br>
+                    Livewire 4.1<br>
+                    Spatie Permission
+                </div>
+                <div class="tech-item">
+                    <strong>Frontend</strong><br>
+                    TailwindCSS 4.0<br>
+                    Alpine.js 3.x<br>
+                    Heroicons
+                </div>
+                <div class="tech-item">
+                    <strong>Base de Données</strong><br>
+                    MySQL 8.0<br>
+                    Eloquent ORM<br>
+                    6 Tables
+                </div>
+                <div class="tech-item">
+                    <strong>Fonctionnalités</strong><br>
+                    Recherche temps réel<br>
+                    Pagination<br>
+                    Notifications
+                </div>
+            </div>
+        </div>
+
+        <div class="credentials">
+            <h2>🔐 Accès Admin</h2>
+            <div class="cred-item"><strong>Email:</strong> admin@artisanmarket.com</div>
+            <div class="cred-item"><strong>Password:</strong> password</div>
+            <div class="cred-item" style="margin-top: 15px; font-size: 0.9em; font-family: sans-serif;">
+                💡 <em>Pour tester : Utilisez aussi artisan1@test.com à artisan8@test.com (3 en attente de validation)</em>
+            </div>
+        </div>
+
+        <div class="links">
+            <h2>🔗 Pages Disponibles</h2>
+            <div class="link-item">
+                📈 <a href="http://localhost:8000/admin/dashboard">Dashboard Principal</a>
+            </div>
+            <div class="link-item">
+                👥 <a href="http://localhost:8000/admin/artisans/approval">Validation des Artisans</a> 
+                <span style="background: #ef4444; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8em; margin-left: 10px;">3 en attente</span>
+            </div>
+            <div class="link-item">
+                🛍️ <a href="http://localhost:8000/admin/products/moderation">Modération des Produits</a>
+            </div>
+            <div class="link-item">
+                👤 <a href="http://localhost:8000/admin/users">Gestion Utilisateurs</a>
+            </div>
+            <div class="link-item">
+                🏷️ <a href="http://localhost:8000/admin/categories">Gestion Catégories</a>
+            </div>
+        </div>
+
+        <div style="background: #e0e7ff; padding: 25px; border-radius: 15px; margin: 30px 0;">
+            <h2 style="color: #667eea; margin-bottom: 15px;">📚 Documentation</h2>
+            <p style="line-height: 1.8;">
+                La documentation complète se trouve dans :<br>
+                <code style="background: white; padding: 5px 10px; border-radius: 5px; display: inline-block; margin-top: 10px;">
+                    docs/ADMIN_DASHBOARD_LIVEWIRE.md
+                </code>
+            </p>
+        </div>
+
+        <div style="background: #dcfce7; padding: 25px; border-radius: 15px; border-left: 5px solid #10b981;">
+            <h2 style="color: #059669; margin-bottom: 15px;">🎯 Fonctionnalités Clés</h2>
+            <ul style="list-style: none; line-height: 2;">
+                <li>✅ Layout admin responsive avec sidebar</li>
+                <li>✅ Notifications en temps réel (badge + toast)</li>
+                <li>✅ Recherche instantanée avec debounce</li>
+                <li>✅ Filtres multiples (statut, catégorie, période)</li>
+                <li>✅ Actions avec confirmations</li>
+                <li>✅ Pagination Livewire</li>
+                <li>✅ Design moderne TailwindCSS</li>
+                <li>✅ Code propre et documenté</li>
+            </ul>
+        </div>
+
+        <footer>
+            <p><strong>ArtisanMarket</strong> - Plateforme e-commerce artisanale multi-profil</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Développé avec Laravel 11 + Livewire 4 + TailwindCSS 4</p>
+            <p style="margin-top: 10px; color: #999;">Version 1.0.0 - Janvier 2026</p>
+        </footer>
+    </div>
+</body>
+</html>
