@@ -24,7 +24,7 @@
             @endif
 
             <x-ui.card>
-                <form method="POST" action="{{ route('artisan.products.store') }}" class="space-y-6">
+                <form method="POST" action="{{ route('artisan.products.store') }}" enctype="multipart/form-data" class="space-y-6">
                     @csrf
 
                     <div>
@@ -103,6 +103,14 @@
                         />
                         <p class="mt-1 text-sm text-gray-500">Code unique pour identifier le produit</p>
                     </div>
+
+                    <!-- Upload d'images -->
+                    <x-ui.file-upload 
+                        name="images"
+                        label="Images du produit"
+                        :multiple="true"
+                        maxSize="5"
+                    />
 
                     <div class="space-y-3">
                         <div class="flex items-center gap-2">

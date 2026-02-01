@@ -24,7 +24,7 @@
             @endif
 
             <x-ui.card>
-                <form method="POST" action="{{ route('artisan.products.update', $product) }}" class="space-y-6">
+                <form method="POST" action="{{ route('artisan.products.update', $product) }}" enctype="multipart/form-data" class="space-y-6">
                     @csrf
                     @method('PUT')
 
@@ -97,6 +97,25 @@
                             :value="old('sku', $product->sku)"
                         />
                     </div>
+
+                    <!-- Upload d'images -->
+                    @php
+                        $existingImages = $product->images->map(function($image) {
+                            return [
+                                'id' => $image->id,
+                                'thumbnail_url' => $image->thumbnail_url,
+                                'is_primary' => $image->is_primary,
+                                'formatted_size' => $image->formatted_size,
+                            ];
+                        })->toArray();
+                    @endphp
+                    <x-ui.file-upload 
+                        name="images"
+                        label="Images du produit"
+                        :multiple="true"
+                        maxSize="5"
+                        :existingImages="$existingImages"
+                    />
 
                     <div class="space-y-3">
                         <div class="flex items-center gap-2">

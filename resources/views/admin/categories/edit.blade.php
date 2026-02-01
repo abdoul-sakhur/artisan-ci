@@ -24,7 +24,7 @@
             @endif
 
             <x-ui.card>
-                <form method="POST" action="{{ route('admin.categories.update', $category) }}" class="space-y-6">
+                <form method="POST" action="{{ route('admin.categories.update', $category) }}" enctype="multipart/form-data" class="space-y-6">
                     @csrf
                     @method('PUT')
 
@@ -55,13 +55,12 @@
                     </div>
 
                     <div>
-                        <x-ui.label for="image_url">URL de l'image</x-ui.label>
+                        <x-ui.label for="image">Image de la catégorie</x-ui.label>
                         <x-ui.input 
-                            id="image_url" 
-                            name="image_url" 
-                            type="url" 
-                            :value="old('image_url', $category->image_url)"
-                            placeholder="https://example.com/image.jpg"
+                            id="image" 
+                            name="image" 
+                            type="file"
+                            accept="image/png,image/jpeg,image/webp"
                         />
                         @if($category->image_url)
                             <div class="mt-3">
@@ -69,6 +68,7 @@
                                 <img src="{{ $category->image_url }}" alt="{{ $category->name }}" class="h-32 w-32 object-cover rounded-lg border">
                             </div>
                         @endif
+                        <p class="mt-1 text-sm text-gray-500">Importer une nouvelle image pour la remplacer (max 5MB)</p>
                     </div>
 
                     <div>

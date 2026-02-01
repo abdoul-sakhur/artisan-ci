@@ -48,8 +48,13 @@
                         @foreach($products as $product)
                             <div class="border rounded-lg overflow-hidden hover:shadow-lg transition">
                                 <div class="aspect-w-16 aspect-h-9 bg-gray-200">
-                                    @if($product->images->first())
-                                        <img src="{{ $product->images->first()->image_url }}" alt="{{ $product->name }}" class="w-full h-48 object-cover">
+                                    @php($firstImage = $product->images->first())
+                                    @if($firstImage)
+                                        <img 
+                                            src="{{ $firstImage->thumbnail_url ?? $firstImage->image_url ?? asset('images/default-product.jpg') }}" 
+                                            alt="{{ $product->name }}" 
+                                            class="w-full h-48 object-cover"
+                                        >
                                     @else
                                         <div class="w-full h-48 bg-gray-100 flex items-center justify-center">
                                             <svg class="h-16 w-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">

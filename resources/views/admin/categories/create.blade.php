@@ -24,7 +24,7 @@
             @endif
 
             <x-ui.card>
-                <form method="POST" action="{{ route('admin.categories.store') }}" class="space-y-6">
+                <form method="POST" action="{{ route('admin.categories.store') }}" enctype="multipart/form-data" class="space-y-6">
                     @csrf
 
                     <div>
@@ -52,15 +52,14 @@
                     </div>
 
                     <div>
-                        <x-ui.label for="image_url">URL de l'image</x-ui.label>
+                        <x-ui.label for="image">Image de la catégorie</x-ui.label>
                         <x-ui.input 
-                            id="image_url" 
-                            name="image_url" 
-                            type="url" 
-                            :value="old('image_url')"
-                            placeholder="https://example.com/image.jpg"
+                            id="image" 
+                            name="image" 
+                            type="file"
+                            accept="image/png,image/jpeg,image/webp"
                         />
-                        <p class="mt-1 text-sm text-gray-500">URL complète de l'image de la catégorie</p>
+                        <p class="mt-1 text-sm text-gray-500">Formats autorisés: JPG, PNG, WEBP (max 5MB)</p>
                     </div>
 
                     <div>

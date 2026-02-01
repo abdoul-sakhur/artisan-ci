@@ -37,12 +37,18 @@ class CategoryController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:categories,name',
             'description' => 'nullable|string',
-            'image_url' => 'nullable|url',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:5120',
             'is_active' => 'boolean',
         ]);
 
         $validated['slug'] = Str::slug($validated['name']);
         $validated['is_active'] = $request->has('is_active');
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('categories', 'public');
+            $validated['image'] = $path;
+        }
 
         Category::create($validated);
 
@@ -56,6 +62,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
+        $category->loadCount('products');
         return view('admin.categories.edit', compact('category'));
     }
 
@@ -67,12 +74,22 @@ class CategoryController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:categories,name,' . $category->id,
             'description' => 'nullable|string',
-            'image_url' => 'nullable|url',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:5120',
             'is_active' => 'boolean',
         ]);
 
         $validated['slug'] = Str::slug($validated['name']);
         $validated['is_active'] = $request->has('is_active');
+
+        // Handle image replacement if a new file is uploaded
+        if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if (!empty($category->image)) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($category->image);
+            }
+            $path = $request->file('image')->store('categories', 'public');
+            $validated['image'] = $path;
+        }
 
         $category->update($validated);
 

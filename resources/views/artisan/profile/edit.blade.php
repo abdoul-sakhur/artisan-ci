@@ -31,7 +31,7 @@
                     </h3>
                 </div>
 
-                <form method="POST" action="{{ route('artisan.profile.update') }}" class="p-6 space-y-6">
+                <form method="POST" action="{{ route('artisan.profile.update') }}" enctype="multipart/form-data" class="p-6 space-y-6">
                     @csrf
                     @method('PUT')
 
@@ -61,35 +61,34 @@
                     </div>
 
                     <div>
-                        <x-ui.label for="shop_logo">URL du logo</x-ui.label>
+                        <x-ui.label for="shop_logo">Logo de la boutique</x-ui.label>
                         <x-ui.input 
                             id="shop_logo" 
                             name="shop_logo" 
-                            type="url" 
-                            :value="old('shop_logo', $artisan->shop_logo)"
-                            placeholder="https://example.com/logo.png"
+                            type="file"
+                            accept="image/png,image/jpeg,image/webp"
                         />
-                        @if($artisan->shop_logo)
+                        @if($artisan->logo_url)
                             <div class="mt-3">
                                 <p class="text-sm text-gray-500 mb-2">Logo actuel :</p>
-                                <img src="{{ $artisan->shop_logo }}" alt="Logo" class="h-24 w-24 object-cover rounded-lg border">
+                                <img src="{{ $artisan->logo_url }}" alt="Logo" class="h-24 w-24 object-cover rounded-lg border">
                             </div>
                         @endif
+                        <p class="mt-1 text-sm text-gray-500">Formats autorisés: JPG, PNG, WEBP (max 5MB)</p>
                     </div>
 
                     <div>
-                        <x-ui.label for="shop_banner">URL de la bannière</x-ui.label>
+                        <x-ui.label for="shop_banner">Bannière de la boutique</x-ui.label>
                         <x-ui.input 
                             id="shop_banner" 
                             name="shop_banner" 
-                            type="url" 
-                            :value="old('shop_banner', $artisan->shop_banner)"
-                            placeholder="https://example.com/banner.jpg"
+                            type="file"
+                            accept="image/png,image/jpeg,image/webp"
                         />
-                        @if($artisan->shop_banner)
+                        @if($artisan->banner_url)
                             <div class="mt-3">
                                 <p class="text-sm text-gray-500 mb-2">Bannière actuelle :</p>
-                                <img src="{{ $artisan->shop_banner }}" alt="Bannière" class="w-full h-32 object-cover rounded-lg border">
+                                <img src="{{ $artisan->banner_url }}" alt="Bannière" class="w-full h-32 object-cover rounded-lg border">
                             </div>
                         @endif
                         <p class="mt-1 text-sm text-gray-500">Dimensions recommandées : 1200x400 pixels</p>

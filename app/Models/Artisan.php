@@ -132,5 +132,33 @@ class Artisan extends Model
             'approved_by' => null,
         ]);
     }
+
+    /**
+     * Accessor for `logo_url` to resolve storage path or external URL.
+     */
+    public function getLogoUrlAttribute(): ?string
+    {
+        if (empty($this->shop_logo)) {
+            return null;
+        }
+        if (str_starts_with($this->shop_logo, 'http://') || str_starts_with($this->shop_logo, 'https://')) {
+            return $this->shop_logo;
+        }
+        return asset('storage/' . ltrim($this->shop_logo, '/'));
+    }
+
+    /**
+     * Accessor for `banner_url` to resolve storage path or external URL.
+     */
+    public function getBannerUrlAttribute(): ?string
+    {
+        if (empty($this->shop_banner)) {
+            return null;
+        }
+        if (str_starts_with($this->shop_banner, 'http://') || str_starts_with($this->shop_banner, 'https://')) {
+            return $this->shop_banner;
+        }
+        return asset('storage/' . ltrim($this->shop_banner, '/'));
+    }
 }
 

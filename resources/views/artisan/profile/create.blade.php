@@ -34,7 +34,7 @@
                     </p>
                 </div>
 
-                <form method="POST" action="{{ route('artisan.profile.store') }}" class="p-6 space-y-6">
+                <form method="POST" action="{{ route('artisan.profile.store') }}" enctype="multipart/form-data" class="p-6 space-y-6">
                     @csrf
 
                     <div>
@@ -67,29 +67,27 @@
                     </div>
 
                     <div>
-                        <x-ui.label for="shop_logo">URL du logo (optionnel)</x-ui.label>
+                        <x-ui.label for="shop_logo">Logo de la boutique (optionnel)</x-ui.label>
                         <x-ui.input 
                             id="shop_logo" 
                             name="shop_logo" 
-                            type="url" 
-                            :value="old('shop_logo')"
-                            placeholder="https://example.com/logo.png"
+                            type="file"
+                            accept="image/png,image/jpeg,image/webp"
                         />
                         <p class="mt-1 text-sm text-gray-500">
-                            Vous pourrez ajouter ou modifier votre logo plus tard
+                            Formats autorisés: JPG, PNG, WEBP (max 5MB)
                         </p>
                     </div>
 
                     <div>
-                        <x-ui.label for="shop_banner">URL de la bannière (optionnel)</x-ui.label>
+                        <x-ui.label for="shop_banner">Bannière de la boutique (optionnel)</x-ui.label>
                         <x-ui.input 
                             id="shop_banner" 
                             name="shop_banner" 
-                            type="url" 
-                            :value="old('shop_banner')"
-                            placeholder="https://example.com/banner.jpg"
+                            type="file"
+                            accept="image/png,image/jpeg,image/webp"
                         />
-                        <p class="mt-1 text-sm text-gray-500">Dimensions recommandées : 1200x400 pixels</p>
+                        <p class="mt-1 text-sm text-gray-500">Dimensions recommandées : 1200x400 pixels (max 8MB)</p>
                     </div>
 
                     <x-ui.alert variant="info">
@@ -107,7 +105,7 @@
                     </x-ui.alert>
 
                     <div class="flex items-center gap-3 pt-4">
-                        <x-ui.button type="submit">
+                        <x-ui.button type="submit" as="button">
                             Créer ma boutique
                         </x-ui.button>
                         
