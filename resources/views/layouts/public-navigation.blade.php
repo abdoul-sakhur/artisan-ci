@@ -5,24 +5,36 @@
             {{-- Logo --}}
             <div class="flex items-center">
                 <a href="{{ route('front.home') }}" class="flex items-center">
-                    <span class="text-2xl font-bold text-amber-600">🏺</span>
-                    <span class="ml-2 text-xl font-bold text-gray-900">Artisans du Maroc</span>
+                    <svg class="w-8 h-8 text-amber-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z" opacity=".3"/>
+                    </svg>
+                    <span class="ml-2 text-xl font-bold text-gray-900">Artisans de Côte d'Ivoire</span>
                 </a>
             </div>
 
             {{-- Navigation principale (Desktop) --}}
             <div class="hidden md:flex items-center space-x-8">
                 <a href="{{ route('front.home') }}" 
-                   class="text-gray-700 hover:text-amber-600 transition-colors font-medium {{ request()->routeIs('front.home') ? 'text-amber-600' : '' }}">
-                    🏠 Accueil
+                   class="flex items-center gap-1.5 text-gray-700 hover:text-amber-600 transition-colors font-medium {{ request()->routeIs('front.home') ? 'text-amber-600' : '' }}">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    <span>Accueil</span>
                 </a>
                 <a href="{{ route('front.shop.index') }}" 
-                   class="text-gray-700 hover:text-amber-600 transition-colors font-medium {{ request()->routeIs('front.shop.*') ? 'text-amber-600' : '' }}">
-                    🛍️ Boutique
+                   class="flex items-center gap-1.5 text-gray-700 hover:text-amber-600 transition-colors font-medium {{ request()->routeIs('front.shop.*') ? 'text-amber-600' : '' }}">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                    </svg>
+                    <span>Boutique</span>
                 </a>
                 <a href="{{ route('front.artisans.index') }}" 
-                   class="text-gray-700 hover:text-amber-600 transition-colors font-medium {{ request()->routeIs('front.artisans.*') ? 'text-amber-600' : '' }}">
-                    👥 Artisans
+                   class="flex items-center gap-1.5 text-gray-700 hover:text-amber-600 transition-colors font-medium {{ request()->routeIs('front.artisans.*') ? 'text-amber-600' : '' }}">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    </svg>
+                    <span>Artisans</span>
                 </a>
             </div>
 
@@ -53,7 +65,10 @@
                          class="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-200 py-4">
                         
                         <div class="px-4 pb-2 border-b border-gray-200">
-                            <h3 class="font-semibold text-gray-900">🛒 Mon Panier</h3>
+                            <h3 class="font-semibold text-gray-900 flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#D97706" d="M6.005 9h13.938l.5-2H8.005V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5.004a1 1 0 0 1-1-1V4h-2V2h3a1 1 0 0 1 1 1zm0 14a2 2 0 1 1 0-4a2 2 0 0 1 0 4m12 0a2 2 0 1 1 0-4a2 2 0 0 1 0 4"/></svg>
+                                Mon Panier
+                            </h3>
                         </div>
                         
                         <div x-show="cartCount === 0" class="px-4 py-8 text-center text-gray-500">
@@ -135,27 +150,31 @@
                          class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1">
                         
                         <a href="{{ route('front.client.account') }}" 
-                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-600">
-                            📱 Mon compte
+                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-600 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                            Mon compte
                         </a>
                         <a href="{{ route('front.client.orders') }}" 
-                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-600">
-                            📦 Mes commandes
+                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-600 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                            Mes commandes
                         </a>
                         
                         @if(Auth::user()->role === 'artisan')
                         <div class="border-t border-gray-200 my-1"></div>
                         <a href="{{ route('artisan.dashboard') }}" 
-                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-600">
-                            🎨 Espace Artisan
+                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 border-t border-gray-200 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+                            Espace Artisan
                         </a>
                         @endif
                         
                         @if(Auth::user()->role === 'admin')
                         <div class="border-t border-gray-200 my-1"></div>
                         <a href="{{ route('admin.dashboard') }}" 
-                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-600">
-                            ⚙️ Administration
+                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-600 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            Administration
                         </a>
                         @endif
                         
@@ -172,12 +191,12 @@
                 @else
                 <div class="flex items-center space-x-3">
                     <a href="{{ route('login') }}" 
-                       class="text-gray-700 hover:text-amber-600 transition-colors font-medium">
-                        🔐 Connexion
+                       class="text-gray-700 hover:text-amber-600 transition-colors font-medium flex items-center gap-1.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#D97706" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zm6-4V8l5 4l-5 4v-3H2v-2z"/></svg> Connexion
                     </a>
                     <a href="{{ route('register') }}" 
-                       class="bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition-colors font-medium">
-                        📝 S'inscrire
+                       class="bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition-colors font-medium flex items-center gap-1.5">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#fff" fill-rule="evenodd" d="M10.845 8.095a.75.75 0 0 0 0 1.06l1.72 1.72h-8.19a.75.75 0 0 0 0 1.5h8.19l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 0 0-1.06 0" clip-rule="evenodd"/><path fill="#fff" d="M12.375 5.877c0 .448.274.84.591 1.157l3 3a2.25 2.25 0 0 1 0 3.182l-3 3c-.317.317-.591.709-.591 1.157v2.252a8 8 0 1 0 0-16z"/></svg>                        S'inscrire
                     </a>
                 </div>
                 @endauth
@@ -219,27 +238,38 @@
         
         <div class="px-4 py-2 space-y-1">
             <a href="{{ route('front.home') }}" 
-               class="block px-3 py-2 text-gray-700 hover:bg-amber-50 hover:text-amber-600 rounded font-medium">
-                🏠 Accueil
+               class="flex items-center gap-2 px-3 py-2 text-gray-700 hover:bg-amber-50 hover:text-amber-600 rounded font-medium">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+                <span>Accueil</span>
             </a>
             <a href="{{ route('front.shop.index') }}" 
-               class="block px-3 py-2 text-gray-700 hover:bg-amber-50 hover:text-amber-600 rounded font-medium">
-                🛍️ Boutique
+               class="flex items-center gap-2 px-3 py-2 text-gray-700 hover:bg-amber-50 hover:text-amber-600 rounded font-medium">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                </svg>
+                <span>Boutique</span>
             </a>
             <a href="{{ route('front.artisans.index') }}" 
-               class="block px-3 py-2 text-gray-700 hover:bg-amber-50 hover:text-amber-600 rounded font-medium">
-                👥 Artisans
+               class="flex items-center gap-2 px-3 py-2 text-gray-700 hover:bg-amber-50 hover:text-amber-600 rounded font-medium">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                </svg>
+                <span>Artisans</span>
             </a>
             
             @auth
             <div class="border-t border-gray-200 pt-2 mt-2">
                 <a href="{{ route('front.client.account') }}" 
-                   class="block px-3 py-2 text-gray-700 hover:bg-amber-50 hover:text-amber-600 rounded">
-                    📱 Mon compte
+                   class="block px-3 py-2 text-gray-700 hover:bg-amber-50 hover:text-amber-600 rounded flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                    Mon compte
                 </a>
                 <a href="{{ route('front.client.orders') }}" 
-                   class="block px-3 py-2 text-gray-700 hover:bg-amber-50 hover:text-amber-600 rounded">
-                    📦 Mes commandes
+                   class="block px-3 py-2 text-gray-700 hover:bg-amber-50 hover:text-amber-600 rounded flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                    Mes commandes
                 </a>
                 <form method="POST" action="{{ route('logout') }}" class="mt-2">
                     @csrf

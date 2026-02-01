@@ -1,0 +1,5 @@
+
+admin@artisanmarket.com (password)
+artisan@test.com (password)
+client@test.com (password)
+

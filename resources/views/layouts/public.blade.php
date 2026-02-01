@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title ?? 'ArtisanMarket - Marketplace d\'Artisanat Marocain' }}</title>
+    <title>{{ $title ?? 'ArtisanMarket - Marketplace d\'Artisanat Cote d\'ivoire' }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -87,7 +87,7 @@
                     <div>
                         <h3 class="text-lg font-semibold mb-4">🏺 ArtisanMarket</h3>
                         <p class="text-gray-400 text-sm">
-                            Marketplace dédiée à l'artisanat marocain authentique. Soutenez les artisans locaux.
+                            Marketplace dédiée à l'artisanat Cote d'ivoire authentique. Soutenez les artisans locaux.
                         </p>
                     </div>
 
@@ -116,7 +116,7 @@
                         <ul class="space-y-2 text-sm text-gray-400">
                             <li>📧 contact@artisanmarket.ma</li>
                             <li>📞 +212 5XX XX XX XX</li>
-                            <li>📍 Maroc</li>
+                            <li>📍 Cote d'ivoire</li>
                         </ul>
                     </div>
                 </div>

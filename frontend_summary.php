@@ -95,7 +95,7 @@ echo "🌐 LIENS D'ACCÈS\n";
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
 echo "🏠 Accueil:               http://127.0.0.1:8000/\n";
 echo "🛍️ Boutique:              http://127.0.0.1:8000/shop\n";
-echo "📦 Exemple produit:       http://127.0.0.1:8000/shop/poterie-artisanale-marocaine\n";
+echo "📦 Exemple produit:       http://127.0.0.1:8000/shop/poterie-artisanale-Cote d'ivoire\n";
 echo "🔍 Filtre catégorie:      http://127.0.0.1:8000/shop?category=1\n";
 echo "👤 Filtre artisan:        http://127.0.0.1:8000/shop?artisan=1\n";
 echo "💰 Filtre prix:           http://127.0.0.1:8000/shop?min_price=10000&max_price=50000\n";

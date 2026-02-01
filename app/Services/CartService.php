@@ -239,7 +239,7 @@ class CartService
      */
     protected function formatPrice(int $priceInCents): string
     {
-        return number_format($priceInCents / 100, 2, ',', ' ') . ' €';
+        return number_format($priceInCents / 100, 2, ',', ' ') . ' FCFA';
     }
 
     /**

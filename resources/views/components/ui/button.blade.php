@@ -12,8 +12,10 @@
     'lg' => 'px-5 py-3 text-base',
   ];
   $variants = [
+    'default' => 'bg-amber-600 text-white hover:bg-amber-700 focus:ring-amber-400',
     'primary' => 'bg-amber-600 text-white hover:bg-amber-700 focus:ring-amber-400',
     'secondary' => 'bg-stone-900 text-white hover:bg-stone-800 focus:ring-stone-400',
+    'destructive' => 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-400',
     'outline' => 'border border-stone-300 text-stone-900 bg-white hover:border-amber-600 hover:text-amber-700 focus:ring-stone-300',
     'ghost' => 'text-stone-900 hover:bg-stone-100',
     'link' => 'text-amber-700 hover:text-amber-800',

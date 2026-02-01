@@ -106,7 +106,7 @@
                 <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                     <x-ui.stat-card 
                         title="Ventes Totales" 
-                        value="12,345 €"
+                        value="12,345 FCFA"
                         trend="up"
                         trendValue="+12%"
                         description="vs mois dernier"
@@ -221,7 +221,7 @@
                         <tr class="border-b transition-colors hover:bg-muted/50">
                             <td class="p-4 align-middle font-medium">Vase en céramique</td>
                             <td class="p-4 align-middle">Poterie</td>
-                            <td class="p-4 align-middle">45,00 €</td>
+                            <td class="p-4 align-middle">45,00 FCFA</td>
                             <td class="p-4 align-middle">12</td>
                             <td class="p-4 align-middle">
                                 <x-ui.badge variant="success">Publié</x-ui.badge>
@@ -230,7 +230,7 @@
                         <tr class="border-b transition-colors hover:bg-muted/50">
                             <td class="p-4 align-middle font-medium">Bracelet artisanal</td>
                             <td class="p-4 align-middle">Bijoux</td>
-                            <td class="p-4 align-middle">28,50 €</td>
+                            <td class="p-4 align-middle">28,50 FCFA</td>
                             <td class="p-4 align-middle">5</td>
                             <td class="p-4 align-middle">
                                 <x-ui.badge variant="warning">Stock faible</x-ui.badge>
@@ -239,7 +239,7 @@
                         <tr class="border-b transition-colors hover:bg-muted/50">
                             <td class="p-4 align-middle font-medium">Sac en cuir</td>
                             <td class="p-4 align-middle">Maroquinerie</td>
-                            <td class="p-4 align-middle">120,00 €</td>
+                            <td class="p-4 align-middle">120,00 FCFA</td>
                             <td class="p-4 align-middle">0</td>
                             <td class="p-4 align-middle">
                                 <x-ui.badge variant="destructive">Rupture</x-ui.badge>

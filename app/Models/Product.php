@@ -102,5 +102,16 @@ class Product extends Model
     {
         return $this->is_published && $this->quantity >= $quantity;
     }
+
+    // Accessors
+    public function getFormattedPriceAttribute()
+    {
+        return number_format($this->price, 2, ',', ' ') . ' FCFA';
+    }
+
+    public function getStockQuantityAttribute()
+    {
+        return $this->quantity;
+    }
 }
 

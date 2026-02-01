@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.front')
 
-@section('title', 'Mon Compte - Artisans du Maroc')
+@section('title', 'Mon Compte - Artisans de Côte d\'Ivoire')
 
 @section('content')
 <div class="min-h-screen bg-gray-50">
@@ -21,7 +21,7 @@
                     <div class="text-gray-600">Commandes passées</div>
                 </div>
                 <div class="bg-white rounded-xl shadow-sm p-6 text-center">
-                    <div class="text-3xl font-bold text-amber-600 mb-2">{{ number_format($totalSpent / 100, 0) }} €</div>
+                    <div class="text-3xl font-bold text-amber-600 mb-2">{{ number_format($totalSpent / 100, 0) }} FCFA</div>
                     <div class="text-gray-600">Total dépensé</div>
                 </div>
                 <div class="bg-white rounded-xl shadow-sm p-6 text-center">
@@ -195,7 +195,7 @@
                                 {{ ucfirst($lastOrder->status) }}
                             </span>
                         </div>
-                        <div><strong>Total :</strong> {{ number_format($lastOrder->total_amount / 100, 2, ',', ' ') }} €</div>
+                        <div><strong>Total :</strong> {{ number_format($lastOrder->total_amount / 100, 2, ',', ' ') }} FCFA</div>
                     </div>
                     <a href="{{ route('front.orders.show', $lastOrder->order_number) }}" 
                        class="mt-3 inline-block text-amber-600 hover:text-amber-700 text-sm font-medium">

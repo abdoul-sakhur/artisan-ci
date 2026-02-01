@@ -6,7 +6,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             <div class="text-center">
                 <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-                    Découvrez l'Artisanat Marocain Authentique
+                    Découvrez l'Artisanat Ivoirien Authentique
                 </h1>
                 <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                     Soutenez les artisans locaux et découvrez des œuvres uniques fabriquées à la main avec passion et savoir-faire traditionnel.

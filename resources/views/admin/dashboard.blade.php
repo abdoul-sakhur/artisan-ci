@@ -54,7 +54,7 @@
 
                 <x-ui.stat-card 
                     title="Revenus Total" 
-                    :value="number_format($stats['total_revenue'], 2) . ' €'"
+                    :value="number_format($stats['total_revenue'], 2) . ' FCFA'"
                     description="{{ $stats['total_orders'] }} commandes"
                 >
                     <x-slot name="icon">
@@ -151,7 +151,7 @@
                                     <td class="p-4 align-middle font-medium">{{ $order->order_number }}</td>
                                     <td class="p-4 align-middle">{{ $order->user->name }}</td>
                                     <td class="p-4 align-middle">{{ $order->artisan->shop_name }}</td>
-                                    <td class="p-4 align-middle">{{ number_format($order->total_amount, 2) }} €</td>
+                                    <td class="p-4 align-middle">{{ number_format($order->total_amount, 2) }} FCFA</td>
                                     <td class="p-4 align-middle">
                                         @php
                                             $statusVariant = match($order->status) {

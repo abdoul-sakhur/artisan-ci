@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.front')
 
-@section('title', 'Mon Panier - Artisans du Maroc')
+@section('title', 'Mon Panier - Artisans ')
 
 @section('content')
 <div class="min-h-screen bg-gray-50" x-data="cartPage()">
@@ -15,7 +15,10 @@
             <span class="text-gray-900 font-medium">Mon Panier</span>
         </nav>
 
-        <h1 class="text-3xl font-bold text-gray-900 mb-8">🛒 Mon Panier</h1>
+        <h1 class="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path fill="#D97706" d="M6.005 9h13.938l.5-2H8.005V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5.004a1 1 0 0 1-1-1V4h-2V2h3a1 1 0 0 1 1 1zm0 14a2 2 0 1 1 0-4a2 2 0 0 1 0 4m12 0a2 2 0 1 1 0-4a2 2 0 0 1 0 4"/></svg>
+            Mon Panier
+        </h1>
 
         @if($cartItems && count($cartItems) > 0)
         <div class="lg:grid lg:grid-cols-3 lg:gap-8">
@@ -116,8 +119,8 @@
                         ← Continuer mes achats
                     </a>
                     <button @click="clearCart()"
-                            class="flex-1 bg-red-100 text-red-700 py-3 px-6 rounded-lg hover:bg-red-200 transition-colors font-medium">
-                        🗑️ Vider le panier
+                            class="flex-1 bg-red-100 text-red-700 py-3 px-6 rounded-lg hover:bg-red-200 transition-colors font-medium flex items-center justify-center gap-2">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="#640202" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16m-10 4v6m4-6v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg>                         Vider le panier
                     </button>
                 </div>
             </div>
@@ -125,12 +128,12 @@
             {{-- Résumé de commande --}}
             <div class="mt-8 lg:mt-0">
                 <div class="bg-white rounded-xl shadow-sm p-6 sticky top-4">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-6">📋 Résumé</h3>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-6 flex justify-between"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#D97706" d="M4 3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm3 6V7h10v2zm0 4v-2h10v2zm10 4H7v-2h10z"/></svg> Résumé</h3>
                     
                     <div class="space-y-4 mb-6">
                         <div class="flex justify-between">
                             <span class="text-gray-600">Sous-total</span>
-                            <span class="font-medium">{{ number_format($total / 100, 2, ',', ' ') }} €</span>
+                            <span class="font-medium">{{ number_format($total / 100, 2, ',', ' ') }} FCFA</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Livraison</span>
@@ -140,7 +143,7 @@
                             <div class="flex justify-between">
                                 <span class="text-lg font-semibold text-gray-900">Total</span>
                                 <span class="text-xl font-bold text-amber-600">
-                                    {{ number_format($total / 100, 2, ',', ' ') }} €
+                                    {{ number_format($total / 100, 2, ',', ' ') }} FCFA
                                 </span>
                             </div>
                         </div>
@@ -156,8 +159,8 @@
                         <div class="text-center">
                             <p class="text-sm text-gray-600 mb-3">Connectez-vous pour commander</p>
                             <a href="{{ route('login') }}" 
-                               class="w-full bg-amber-600 text-white text-center py-3 px-6 rounded-lg hover:bg-amber-700 transition-colors font-semibold block">
-                                🔐 Se connecter
+                               class="w-full bg-amber-600 text-white text-center py-3 px-6 rounded-lg hover:bg-amber-700 transition-colors font-semibold block flex items-center justify-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#fff" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zm6-4V8l5 4l-5 4v-3H2v-2z"/></svg> Se connecter
                             </a>
                             <a href="{{ route('register') }}" 
                                class="w-full mt-2 border border-amber-600 text-amber-600 text-center py-2 px-6 rounded-lg hover:bg-amber-50 transition-colors font-medium block">
@@ -195,15 +198,20 @@
         @else
         {{-- Panier vide --}}
         <div class="bg-white rounded-xl shadow-sm p-12 text-center">
-            <div class="text-6xl mb-6">🛒</div>
+            <div class="mb-6">
+                <svg class="w-24 h-24 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            </div>
             <h2 class="text-2xl font-bold text-gray-900 mb-4">Votre panier est vide</h2>
             <p class="text-gray-600 mb-8">
                 Découvrez nos magnifiques créations artisanales et ajoutez-les à votre panier
             </p>
             <div class="space-y-4">
                 <a href="{{ route('front.shop.index') }}" 
-                   class="bg-amber-600 text-white px-8 py-3 rounded-lg hover:bg-amber-700 transition-colors font-semibold inline-block">
-                    🛍️ Découvrir la boutique
+                   class="bg-amber-600 text-white px-8 py-3 rounded-lg hover:bg-amber-700 transition-colors font-semibold inline-flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                    </svg>
+                    Découvrir la boutique
                 </a>
                 <div class="flex justify-center gap-6 text-sm text-gray-500">
                     <a href="{{ route('front.shop.index', ['sort' => 'latest']) }}" 
