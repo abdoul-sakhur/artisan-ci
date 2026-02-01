@@ -93,7 +93,7 @@
                                         <form method="POST" action="{{ route('artisan.products.destroy', $product) }}" onsubmit="return confirm('Supprimer ce produit ?')">
                                             @csrf
                                             @method('DELETE')
-                                            <x-ui.button type="submit" size="sm" variant="destructive">
+                                            <x-ui.button type="submit" size="sm" variant="destructive" as="button">
                                                 Supprimer
                                             </x-ui.button>
                                         </form>

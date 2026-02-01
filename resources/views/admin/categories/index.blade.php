@@ -101,6 +101,7 @@
                                                 <x-ui.button 
                                                     size="sm" 
                                                     variant="destructive" 
+                                                    as="button"
                                                     disabled
                                                     title="Impossible de supprimer une catégorie contenant des produits"
                                                 >

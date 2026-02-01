@@ -116,7 +116,7 @@
                     @endif
 
                     <div class="flex gap-3 pt-4 border-t">
-                        <x-ui.button type="submit" variant="default">
+                        <x-ui.button type="submit" variant="default" as="button">
                             Enregistrer les modifications
                         </x-ui.button>
                         <x-ui.button type="button" variant="outline" href="{{ route('artisan.dashboard') }}">
