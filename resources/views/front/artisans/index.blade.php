@@ -23,11 +23,11 @@
         {{-- Statistiques --}}
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             <div class="bg-white rounded-xl shadow-sm p-6 text-center">
-                <div class="text-3xl font-bold text-amber-600 mb-2">{{ $artisans->total() }}</div>
+                <div class="text-3xl font-bold text-amber-600 mb-2">{{ $totalArtisans }}</div>
                 <div class="text-gray-600">Artisans approuvés</div>
             </div>
             <div class="bg-white rounded-xl shadow-sm p-6 text-center">
-                <div class="text-3xl font-bold text-amber-600 mb-2">{{ $artisans->sum('products_count') }}</div>
+                <div class="text-3xl font-bold text-amber-600 mb-2">{{ $totalProducts }}</div>
                 <div class="text-gray-600">Créations disponibles</div>
             </div>
             <div class="bg-white rounded-xl shadow-sm p-6 text-center">

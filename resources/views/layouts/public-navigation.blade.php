@@ -5,11 +5,18 @@
             {{-- Logo --}}
             <div class="flex items-center">
                 <a href="{{ route('front.home') }}" class="flex items-center">
-                    <svg class="w-8 h-8 text-amber-600" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                        <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z" opacity=".3"/>
+                    <svg class="w-10 h-10" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="100" r="95" fill="#F59E0B" opacity="0.2"/>
+                        <path d="M140 70C140 70 145 50 150 45C155 40 165 35 165 35C165 35 170 45 165 55C160 65 150 75 140 70Z" fill="#D97706"/>
+                        <ellipse cx="100" cy="85" rx="45" ry="40" fill="#F59E0B"/>
+                        <path d="M70 100C70 100 65 140 70 155C75 170 90 175 90 175L95 160L85 145L70 100Z" fill="#D97706"/>
+                        <path d="M130 100C130 100 135 140 130 155C125 170 110 175 110 175L105 160L115 145L130 100Z" fill="#D97706"/>
+                        <circle cx="85" cy="75" r="6" fill="#1F2937"/>
+                        <path d="M95 95C95 95 90 115 85 120C80 125 70 130 65 128C60 126 55 120 55 115C55 110 60 105 70 100C80 95 95 95 95 95Z" fill="#B45309"/>
+                        <path d="M100 115L110 125" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M110 115L100 125" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
                     </svg>
-                    <span class="ml-2 text-xl font-bold text-gray-900">Artisans de Côte d'Ivoire</span>
+                    <span class="ml-3 text-xl font-bold text-gray-900">Artisans de Côte d'Ivoire</span>
                 </a>
             </div>
 

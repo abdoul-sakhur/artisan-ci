@@ -56,11 +56,18 @@ class ArtisanController extends Controller
      */
     public function reject(Artisan $artisan)
     {
-        $artisan->reject();
+        $shopName = $artisan->shop_name;
+        $user = $artisan->user;
+        
+        // Supprimer l'artisan
+        $artisan->delete();
+        
+        // Optionnel: Supprimer aussi l'utilisateur associé
+        // $user->delete();
         
         return redirect()
             ->route('admin.artisans.index')
-            ->with('success', "L'artisan {$artisan->shop_name} a été rejeté.");
+            ->with('success', "L'artisan {$shopName} a été rejeté et supprimé.");
     }
 
     /**

@@ -98,15 +98,15 @@
                         <div class="mt-6 flex gap-4 border-t pt-4">
                             <form method="POST" action="{{ route('admin.artisans.approve', $artisan) }}">
                                 @csrf
-                                <x-ui.button type="submit" variant="default">
+                                <x-ui.button type="submit" variant="default" as="button">
                                     Approuver cet artisan
                                 </x-ui.button>
                             </form>
 
-                            <form method="POST" action="{{ route('admin.artisans.reject', $artisan) }}">
+                            <form method="POST" action="{{ route('admin.artisans.reject', $artisan) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir rejeter et supprimer cet artisan ? Cette action est irréversible.')">
                                 @csrf
-                                <x-ui.button type="submit" variant="destructive">
-                                    Rejeter cet artisan
+                                <x-ui.button type="submit" variant="destructive" as="button">
+                                    Rejeter et supprimer
                                 </x-ui.button>
                             </form>
                         </div>

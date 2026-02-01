@@ -61,10 +61,17 @@ class ArtisanController extends Controller
             ->withCount(['products' => function($query) {
                 $query->where('is_published', true);
             }])
-            ->having('products_count', '>', 0)
             ->orderBy('shop_name')
             ->paginate(12);
 
-        return view('front.artisans.index', compact('artisans'));
+        // Statistiques globales
+        $totalArtisans = Artisan::where('is_approved', true)->count();
+        $totalProducts = \App\Models\Product::where('is_published', true)
+            ->whereHas('artisan', function($query) {
+                $query->where('is_approved', true);
+            })
+            ->count();
+
+        return view('front.artisans.index', compact('artisans', 'totalArtisans', 'totalProducts'));
     }
 }

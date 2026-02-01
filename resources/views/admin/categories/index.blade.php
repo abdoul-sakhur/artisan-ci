@@ -93,7 +93,7 @@
                                                 <form method="POST" action="{{ route('admin.categories.destroy', $category) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ?')">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <x-ui.button type="submit" size="sm" variant="destructive">
+                                                    <x-ui.button type="submit" size="sm" variant="destructive" as="button">
                                                         Supprimer
                                                     </x-ui.button>
                                                 </form>

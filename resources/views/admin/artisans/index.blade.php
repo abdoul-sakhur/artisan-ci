@@ -88,14 +88,14 @@
                                                 @if(!$artisan->is_approved)
                                                     <form method="POST" action="{{ route('admin.artisans.approve', $artisan) }}">
                                                         @csrf
-                                                        <x-ui.button type="submit" size="sm" variant="default">
+                                                        <x-ui.button type="submit" size="sm" variant="default" as="button">
                                                             Approuver
                                                         </x-ui.button>
                                                     </form>
 
-                                                    <form method="POST" action="{{ route('admin.artisans.reject', $artisan) }}">
+                                                    <form method="POST" action="{{ route('admin.artisans.reject', $artisan) }}" onsubmit="return confirm('Rejeter et supprimer cet artisan définitivement ?')">
                                                         @csrf
-                                                        <x-ui.button type="submit" size="sm" variant="destructive">
+                                                        <x-ui.button type="submit" size="sm" variant="destructive" as="button">
                                                             Rejeter
                                                         </x-ui.button>
                                                     </form>
