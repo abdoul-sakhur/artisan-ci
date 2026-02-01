@@ -39,9 +39,13 @@
                                 {{-- Image produit --}}
                                 <div class="shrink-0">
                                     <a href="{{ route('front.shop.product', $item['product']->slug) }}">
-                                        <img src="{{ $item['product']->image ?? '/images/default-product.jpg' }}" 
-                                             alt="{{ $item['product']->name }}"
-                                             class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-lg">
+                                        @if(!empty($item['product']->image))
+                                            <img src="{{ $item['product']->image }}" 
+                                                 alt="{{ $item['product']->name }}"
+                                                 class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-lg">
+                                        @else
+                                            <div class="w-20 h-20 sm:w-24 sm:h-24 bg-gray-200 rounded-lg"></div>
+                                        @endif
                                     </a>
                                 </div>
 
@@ -133,7 +137,7 @@
                     <div class="space-y-4 mb-6">
                         <div class="flex justify-between">
                             <span class="text-gray-600">Sous-total</span>
-                            <span class="font-medium">{{ number_format($total / 100, 2, ',', ' ') }} FCFA</span>
+                            <span class="font-medium">{{ number_format($total, 2, ',', ' ') }} FCFA</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Livraison</span>
@@ -143,7 +147,7 @@
                             <div class="flex justify-between">
                                 <span class="text-lg font-semibold text-gray-900">Total</span>
                                 <span class="text-xl font-bold text-amber-600">
-                                    {{ number_format($total / 100, 2, ',', ' ') }} FCFA
+                                    {{ number_format($total, 2, ',', ' ') }} FCFA
                                 </span>
                             </div>
                         </div>

@@ -152,9 +152,13 @@
             <div class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-shadow overflow-hidden">
                 <div class="relative">
                     <a href="{{ route('front.shop.product', $product->slug) }}">
-                        <img src="{{ $product->images->first()?->image_url ?? '/images/default-product.jpg' }}" 
-                             alt="{{ $product->name }}"
-                             class="w-full h-64 object-cover">
+                        @if($product->images->first())
+                            <img src="{{ $product->images->first()->image_url }}" 
+                                 alt="{{ $product->name }}"
+                                 class="w-full h-64 object-cover">
+                        @else
+                            <div class="w-full h-64 bg-gray-200"></div>
+                        @endif
                     </a>
                     @if($product->is_featured)
                     <div class="absolute top-3 left-3">

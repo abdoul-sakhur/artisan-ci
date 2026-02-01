@@ -67,12 +67,12 @@ class ShopController extends Controller
         $products = $query->paginate(12);
 
         // Pour les filtres
-        $categories = Category::withCount(['products' => function($query) {
-            $query->where('is_published', true);
-        }])
-        ->having('products_count', '>', 0)
-        ->orderBy('name')
-        ->get();
+        $categories = Category::active()
+            ->withCount(['products' => function($query) {
+                $query->where('is_published', true);
+            }])
+            ->orderBy('name')
+            ->get();
 
         $artisans = Artisan::where('is_approved', true)
             ->withCount(['products' => function($query) {

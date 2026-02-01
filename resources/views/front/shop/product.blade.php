@@ -24,10 +24,14 @@
             {{-- Galerie d'images --}}
             <div class="space-y-4">
                 <div class="relative bg-white rounded-xl shadow-sm overflow-hidden">
-                    <img x-ref="mainImage" 
-                         src="{{ $product->images->first()?->image_url ?? '/images/default-product.jpg' }}" 
-                         alt="{{ $product->name }}"
-                         class="w-full h-96 lg:h-[500px] object-cover">
+                    @if($product->images->first()?->image_url)
+                        <img x-ref="mainImage" 
+                             src="{{ $product->images->first()->image_url }}" 
+                             alt="{{ $product->name }}"
+                             class="w-full h-96 lg:h-[500px] object-cover">
+                    @else
+                        <div class="w-full h-96 lg:h-[500px] bg-gray-200"></div>
+                    @endif
                     
                     {{-- Badges --}}
                     <div class="absolute top-4 left-4 flex flex-col gap-2">
@@ -55,9 +59,13 @@
                     @foreach($product->images as $image)
                     <button @click="changeMainImage('{{ $image->image_url }}')"
                             class="relative bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-                        <img src="{{ $image->image_url }}" 
-                             alt="{{ $product->name }}"
-                             class="w-full h-20 object-cover">
+                        @if(!empty($image->image_url))
+                            <img src="{{ $image->image_url }}" 
+                                 alt="{{ $product->name }}"
+                                 class="w-full h-20 object-cover">
+                        @else
+                            <div class="w-full h-20 bg-gray-200"></div>
+                        @endif
                     </button>
                     @endforeach
                 </div>
@@ -221,9 +229,13 @@
                 <div class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-shadow overflow-hidden">
                     <div class="relative">
                         <a href="{{ route('front.shop.product', $relatedProduct->slug) }}">
-                            <img src="{{ $relatedProduct->images->first()?->image_url ?? '/images/default-product.jpg' }}" 
-                                 alt="{{ $relatedProduct->name }}"
-                                 class="w-full h-48 object-cover">
+                            @if($relatedProduct->images->first()?->image_url)
+                                <img src="{{ $relatedProduct->images->first()->image_url }}" 
+                                     alt="{{ $relatedProduct->name }}"
+                                     class="w-full h-48 object-cover">
+                            @else
+                                <div class="w-full h-48 bg-gray-200"></div>
+                            @endif
                         </a>
                     </div>
                     <div class="p-4">
@@ -259,9 +271,13 @@
                 <div class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-shadow overflow-hidden">
                     <div class="relative">
                         <a href="{{ route('front.shop.product', $artisanProduct->slug) }}">
-                            <img src="{{ $artisanProduct->images->first()?->image_url ?? '/images/default-product.jpg' }}" 
-                                 alt="{{ $artisanProduct->name }}"
-                                 class="w-full h-48 object-cover">
+                            @if($artisanProduct->images->first()?->image_url)
+                                <img src="{{ $artisanProduct->images->first()->image_url }}" 
+                                     alt="{{ $artisanProduct->name }}"
+                                     class="w-full h-48 object-cover">
+                            @else
+                                <div class="w-full h-48 bg-gray-200"></div>
+                            @endif
                         </a>
                     </div>
                     <div class="p-4">

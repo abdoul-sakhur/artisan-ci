@@ -37,7 +37,16 @@
                 @foreach($categories as $category)
                     <a href="{{ route('shop.index', ['category' => $category->id]) }}" class="group">
                         <div class="bg-white rounded-lg p-6 text-center hover:shadow-lg transition border border-gray-200">
-                            <div class="text-4xl mb-3">{{ $category->icon ?? '🏺' }}</div>
+                            <div class="mb-3">
+                                @if(!empty($category->icon))
+                                    <span class="text-4xl">{{ $category->icon }}</span>
+                                @else
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-amber-600 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="5" y="7" width="14" height="13" rx="2" />
+                                        <path d="M9 7a3 3 0 006 0" />
+                                    </svg>
+                                @endif
+                            </div>
                             <h3 class="font-semibold text-gray-900 mb-1 group-hover:text-gray-600">
                                 {{ $category->name }}
                             </h3>
@@ -74,7 +83,12 @@
                                         </div>
                                     @endif
                                     <div class="absolute top-2 right-2">
-                                        <span class="bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-semibold">⭐ Vedette</span>
+                                        <span class="bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-semibold inline-flex items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 inline-block mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor" stroke="none" />
+                                            </svg>
+                                            <span>Vedette</span>
+                                        </span>
                                     </div>
                                 </div>
 
@@ -160,8 +174,11 @@
                     @foreach($artisans as $artisan)
                         <div class="bg-white rounded-lg p-6 text-center hover:shadow-lg transition border border-gray-200">
                             <div class="mb-4">
-                                <div class="w-20 h-20 bg-gray-200 rounded-full mx-auto flex items-center justify-center text-3xl">
-                                    👤
+                                <div class="w-20 h-20 bg-gray-200 rounded-full mx-auto flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="8" r="4" />
+                                        <path d="M4 20c0-4 4-6 8-6s8 2 8 6" />
+                                    </svg>
                                 </div>
                             </div>
                             <h3 class="font-semibold text-lg text-gray-900 mb-2">{{ $artisan->shop_name }}</h3>

@@ -112,12 +112,12 @@ class CartService
     }
 
     /**
-     * Obtenir le montant total (en centimes)
+     * Obtenir le montant total (en unités FCFA)
      */
-    public function getTotal(): int
+    public function getTotal(): float
     {
         $cart = $this->getCart();
-        $total = 0;
+        $total = 0.0;
 
         foreach ($cart as $item) {
             $total += $item['quantity'] * $item['price'];
@@ -235,11 +235,11 @@ class CartService
     }
 
     /**
-     * Formater un prix en centimes
+     * Formater un prix (unités FCFA)
      */
-    protected function formatPrice(int $priceInCents): string
+    protected function formatPrice(float|int $amount): string
     {
-        return number_format($priceInCents / 100, 2, ',', ' ') . ' FCFA';
+        return number_format($amount, 2, ',', ' ') . ' FCFA';
     }
 
     /**

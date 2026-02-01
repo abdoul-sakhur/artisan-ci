@@ -59,7 +59,12 @@
                             {{ number_format($product->price, 0) }} FCFA
                         </span>
                         @if($product->is_featured)
-                            <span class="bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-semibold">⭐ Vedette</span>
+                            <span class="bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-semibold inline-flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor" stroke="none" />
+                                </svg>
+                                <span>Vedette</span>
+                            </span>
                         @endif
                     </div>
 
@@ -95,8 +100,11 @@
                 <div class="bg-gray-50 rounded-lg p-6 mb-8">
                     <h3 class="text-lg font-semibold text-gray-900 mb-4">À propos de l'artisan</h3>
                     <div class="flex items-start space-x-4">
-                        <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center text-2xl">
-                            👤
+                        <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4" />
+                                <path d="M4 20c0-4 4-6 8-6s8 2 8 6" />
+                            </svg>
                         </div>
                         <div class="flex-1">
                             <h4 class="font-semibold text-gray-900">{{ $product->artisan->shop_name }}</h4>
@@ -121,7 +129,7 @@
                             <input type="number" id="quantity" value="1" min="1" max="{{ $product->quantity }}" class="w-16 text-center border-0 focus:ring-0">
                             <button type="button" onclick="incrementQuantity()" class="px-3 py-2 hover:bg-gray-50">+</button>
                         </div>
-                        <button onclick="addToCart({{ $product->id }})" class="flex-1 bg-gray-900 text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition">
+                        <button onclick="addToCart({{ $product->id }})" class="flex-1 bg-amber-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-amber-700 transition">
                             Ajouter au panier
                         </button>
                     </div>

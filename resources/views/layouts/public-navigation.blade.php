@@ -80,7 +80,9 @@
                         </div>
                         
                         <div x-show="cartCount === 0" class="px-4 py-8 text-center text-gray-500">
-                            <div class="text-4xl mb-2">🛒</div>
+                            <div class="mb-2">
+                                <svg class="h-10 w-10 text-amber-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6H19"/></svg>
+                            </div>
                             <p class="text-sm">Votre panier est vide</p>
                             <a href="{{ route('front.shop.index') }}" 
                                class="text-amber-600 hover:text-amber-700 text-sm font-medium">
@@ -93,9 +95,14 @@
                                 <template x-for="item in cartItems" :key="item.product.id">
                                     <div class="px-4 py-3 border-b border-gray-100 last:border-0">
                                         <div class="flex items-center gap-3">
-                                            <img :src="item.product.image || '/images/default-product.jpg'" 
-                                                 :alt="item.product.name"
-                                                 class="w-12 h-12 object-cover rounded">
+                                            <template x-if="item.product.image">
+                                                <img :src="item.product.image" 
+                                                     :alt="item.product.name"
+                                                     class="w-12 h-12 object-cover rounded">
+                                            </template>
+                                            <template x-if="!item.product.image">
+                                                <div class="w-12 h-12 bg-gray-200 rounded"></div>
+                                            </template>
                                             <div class="flex-1 min-w-0">
                                                 <h4 class="text-sm font-medium text-gray-900 truncate" x-text="item.product.name"></h4>
                                                 <p class="text-xs text-gray-500">
@@ -142,7 +149,7 @@
                 <div class="relative" x-data="{ userMenuOpen: false }" @click.away="userMenuOpen = false">
                     <button @click="userMenuOpen = !userMenuOpen" 
                             class="flex items-center text-gray-700 hover:text-amber-600 transition-colors">
-                        <span class="mr-2">👤</span>
+                        <svg class="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
                         <span class="font-medium">{{ Auth::user()->name }}</span>
                         <svg class="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
@@ -191,8 +198,9 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit" 
-                                    class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600">
-                                🚪 Déconnexion
+                                    class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 flex items-center gap-2">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="currentColor" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zm6-4V8l5 4l-5 4v-3H2v-2z"/></svg>
+                                <span>Déconnexion</span>
                             </button>
                         </form>
                     </div>
@@ -283,20 +291,23 @@
                 <form method="POST" action="{{ route('logout') }}" class="mt-2">
                     @csrf
                     <button type="submit" 
-                            class="w-full text-left px-3 py-2 text-red-600 hover:bg-red-50 rounded">
-                        🚪 Déconnexion
+                            class="w-full text-left px-3 py-2 text-red-600 hover:bg-red-50 rounded flex items-center gap-2">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="currentColor" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zm6-4V8l5 4l-5 4v-3H2v-2z"/></svg>
+                        <span>Déconnexion</span>
                     </button>
                 </form>
             </div>
             @else
             <div class="border-t border-gray-200 pt-2 mt-2 space-y-1">
                 <a href="{{ route('login') }}" 
-                   class="block px-3 py-2 text-gray-700 hover:bg-amber-50 hover:text-amber-600 rounded font-medium">
-                    🔐 Connexion
+                   class="block px-3 py-2 text-gray-700 hover:bg-amber-50 hover:text-amber-600 rounded font-medium flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+                    <span>Connexion</span>
                 </a>
                 <a href="{{ route('register') }}" 
-                   class="block px-3 py-2 bg-amber-600 text-white hover:bg-amber-700 rounded font-medium">
-                    📝 S'inscrire
+                   class="block px-3 py-2 bg-amber-600 text-white hover:bg-amber-700 rounded font-medium flex items-center gap-2">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24"><path fill="#ffffff" d="M12.375 5.877c0 .448.274.84.591 1.157l3 3a2.25 2.25 0 0 1 0 3.182l-3 3c-.317.317-.591.709-.591 1.157v2.252a8 8 0 1 0 0-16z"/><path fill="#ffffff" fill-rule="evenodd" d="M10.845 8.095a.75.75 0 0 0 0 1.06l1.72 1.72h-8.19a.75.75 0 0 0 0 1.5h8.19l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 0 0-1.06 0" clip-rule="evenodd"/></svg>
+                    <span>S'inscrire</span>
                 </a>
             </div>
             @endauth

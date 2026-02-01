@@ -66,7 +66,7 @@
                         }}));
                     }
                 })()"
-                class="inline-flex items-center gap-2 rounded-lg bg-stone-900 px-4 py-2 text-white shadow-sm hover:bg-stone-800 focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2 disabled:opacity-50"
+                class="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-white shadow-sm hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 disabled:opacity-50"
                 @disabled($product->stock_quantity <= 0)
             >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M3 3h2l3.6 7.59-1.35 2.45A2 2 0 009 15h9a2 2 0 001.8-1.1l3-6A1 1 0 0022 7H7.21l-.94-2H3zm16 16a2 2 0 11-4 0 2 2 0 014 0zm-10 0a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
