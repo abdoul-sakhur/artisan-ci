@@ -45,6 +45,7 @@
             <a href="{{ route('front.artisans.show', $product->artisan?->shop_slug) }}" class="text-xs text-stone-500 hover:text-amber-700 transition-colors">
                 Voir l'atelier
             </a>
+            @if(!auth()->check() || !auth()->user()->hasRole('artisan'))
             <button
                 x-data
                 @click.prevent="(async () => {
@@ -71,6 +72,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M3 3h2l3.6 7.59-1.35 2.45A2 2 0 009 15h9a2 2 0 001.8-1.1l3-6A1 1 0 0022 7H7.21l-.94-2H3zm16 16a2 2 0 11-4 0 2 2 0 014 0zm-10 0a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
                 Ajouter au panier
             </button>
+            @endif
         </div>
     </div>
 </div>

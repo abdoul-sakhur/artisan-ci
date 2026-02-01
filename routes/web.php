@@ -28,13 +28,15 @@ Route::get('/shop/products/{slug}', [ProductController::class, 'show'])->name('f
 Route::get('/artisans', [ArtisanController::class, 'index'])->name('front.artisans.index');
 Route::get('/artisans/{slug}', [ArtisanController::class, 'show'])->name('front.artisans.show');
 
-// Panier (accessible à tous)
-Route::post('/cart/add', [CartController::class, 'add'])->name('front.cart.add');
-Route::post('/cart/update', [CartController::class, 'update'])->name('front.cart.update');
-Route::post('/cart/remove', [CartController::class, 'remove'])->name('front.cart.remove');
-Route::post('/cart/clear', [CartController::class, 'clear'])->name('front.cart.clear');
-Route::get('/cart/count', [CartController::class, 'count'])->name('front.cart.count');
-Route::get('/cart', [CartController::class, 'index'])->name('front.cart.index');
+// Panier (accessible uniquement aux non-artisans)
+Route::middleware(['prevent.artisan.shopping'])->group(function () {
+    Route::post('/cart/add', [CartController::class, 'add'])->name('front.cart.add');
+    Route::post('/cart/update', [CartController::class, 'update'])->name('front.cart.update');
+    Route::post('/cart/remove', [CartController::class, 'remove'])->name('front.cart.remove');
+    Route::post('/cart/clear', [CartController::class, 'clear'])->name('front.cart.clear');
+    Route::get('/cart/count', [CartController::class, 'count'])->name('front.cart.count');
+    Route::get('/cart', [CartController::class, 'index'])->name('front.cart.index');
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +44,7 @@ Route::get('/cart', [CartController::class, 'index'])->name('front.cart.index');
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'prevent.artisan.shopping'])->group(function () {
     // Checkout
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('front.checkout.index');
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('front.checkout.store');
@@ -115,6 +117,8 @@ Route::middleware(['auth', 'verified', 'role:artisan'])->prefix('artisan')->name
     Route::post('/orders/{order}/update-status', [App\Http\Controllers\Artisan\OrderController::class, 'updateStatus'])->name('orders.update-status');
     
     // Profil Boutique
+    Route::get('/profile/create', [App\Http\Controllers\Artisan\ProfileController::class, 'create'])->name('profile.create');
+    Route::post('/profile', [App\Http\Controllers\Artisan\ProfileController::class, 'store'])->name('profile.store');
     Route::get('/profile', [App\Http\Controllers\Artisan\ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [App\Http\Controllers\Artisan\ProfileController::class, 'update'])->name('profile.update');
 });

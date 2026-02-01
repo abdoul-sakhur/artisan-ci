@@ -61,6 +61,13 @@ class DashboardController extends Controller
     public function pending()
     {
         $artisan = Auth::user()->artisan;
+        
+        // Si l'artisan n'existe pas encore, rediriger vers la création du profil
+        if (!$artisan) {
+            return redirect()->route('artisan.profile.create')
+                ->with('info', 'Veuillez d\'abord créer votre profil artisan.');
+        }
+        
         return view('artisan.pending', compact('artisan'));
     }
 }

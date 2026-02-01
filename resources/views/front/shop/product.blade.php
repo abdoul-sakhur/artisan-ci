@@ -75,10 +75,10 @@
                     </div>
                     <div class="text-right">
                         @if($product->stock_quantity > 0)
-                        <div class="text-green-600 font-semibold">✅ En stock</div>
+                        <div class="text-green-600 font-semibold flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#00d024" d="m17.285 10.668l5.215 3.323l-5.252 3.346L12 13.993l-5.248 3.344L1.5 13.99l5.215-3.323L1.5 7.346L6.752 4L12 7.343L17.248 4L22.5 7.346zm-.074 0L12 7.348l-5.211 3.32L12 13.988zM6.786 18.446l5.252-3.346l5.252 3.346l-5.252 3.346z"/></svg> En stock</div>
                         <div class="text-sm text-gray-500">{{ $product->stock_quantity }} disponibles</div>
                         @else
-                        <div class="text-red-600 font-semibold">❌ Rupture</div>
+                        <div class="text-red-600 font-semibold flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#aa021e" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10m0-2a8 8 0 1 0 0-16a8 8 0 0 0 0 16m0-9.414l2.828-2.829l1.415 1.415L13.414 12l2.829 2.828l-1.415 1.415L12 13.414l-2.828 2.829l-1.415-1.415L10.586 12L7.757 9.172l1.415-1.415z"/></svg>❌ Rupture</div>
                         @endif
                     </div>
                 </div>
@@ -96,7 +96,8 @@
                     </div>
                 </div>
 
-                {{-- Ajouter au panier --}}
+                {{-- Ajouter au panier (uniquement pour non-artisans) --}}
+                @if(!auth()->check() || !auth()->user()->hasRole('artisan'))
                 <form @submit.prevent="addToCart" class="space-y-4">
                     <div class="flex items-center gap-4">
                         <div>
@@ -135,14 +136,23 @@
                         </div>
                     </div>
                 </form>
+                @else
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
+                    <svg class="mx-auto h-12 w-12 text-blue-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <p class="text-blue-700 font-medium">Vous êtes connecté en tant qu'artisan</p>
+                    <p class="text-blue-600 text-sm mt-1">Les artisans peuvent uniquement vendre, pas acheter</p>
+                </div>
+                @endif
 
                 {{-- Actions supplémentaires --}}
                 <div class="flex gap-3 mt-4">
-                    <button class="flex-1 border border-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:border-amber-600 hover:text-amber-600 transition-colors">
-                        ❤️ Favoris
+                    <button class="flex-1 border border-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:border-amber-600 hover:text-amber-600 transition-colors flex items-center justify-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#bd0304" d="M20.243 4.757a6 6 0 0 1 .236 8.236l-8.48 8.492l-8.478-8.492a6 6 0 0 1 6.74-9.553L6.343 7.358l1.414 1.415L12 4.53l-.013-.014l.014.013a6 6 0 0 1 8.242.228"/></svg> Favoris
                     </button>
-                    <button class="flex-1 border border-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:border-amber-600 hover:text-amber-600 transition-colors">
-                        📤 Partager
+                    <button class="flex-1 border border-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:border-amber-600 hover:text-amber-600 transition-colors flex items-center justify-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#D97706" d="M4 19h16v-5h2v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-6h2zm8-9H9a6 6 0 0 0-4.854 2.473A8 8 0 0 1 12 6V2l8 6l-8 6z"/></svg> Partager
                     </button>
                 </div>
 
@@ -170,9 +180,6 @@
                 </div>
                 <div class="flex-1 text-center md:text-left">
                     <h3 class="text-2xl font-bold text-gray-900 mb-2 flex items-center justify-center md:justify-start gap-2">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
                         {{ $product->artisan->name }}
                     </h3>
                     <p class="text-gray-600 mb-4">{{ Str::limit($product->artisan->bio, 200) }}</p>

@@ -13,6 +13,11 @@ class OrderController extends Controller
     {
         $artisan = Auth::user()->artisan;
         
+        if (!$artisan) {
+            return redirect()->route('artisan.profile.create')
+                ->with('info', 'Veuillez d\'abord créer votre profil artisan.');
+        }
+        
         $query = $artisan->orders()->with('user');
 
         // Filtrer par statut
@@ -30,6 +35,11 @@ class OrderController extends Controller
     {
         $artisan = Auth::user()->artisan;
         
+        if (!$artisan) {
+            return redirect()->route('artisan.profile.create')
+                ->with('info', 'Veuillez d\'abord créer votre profil artisan.');
+        }
+        
         if ($order->artisan_id !== $artisan->id) {
             abort(403, 'Accès non autorisé.');
         }
@@ -42,6 +52,11 @@ class OrderController extends Controller
     public function updateStatus(Request $request, Order $order)
     {
         $artisan = Auth::user()->artisan;
+        
+        if (!$artisan) {
+            return redirect()->route('artisan.profile.create')
+                ->with('info', 'Veuillez d\'abord créer votre profil artisan.');
+        }
         
         if ($order->artisan_id !== $artisan->id) {
             abort(403, 'Accès non autorisé.');

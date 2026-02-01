@@ -41,7 +41,8 @@
             {{-- Actions utilisateur (Desktop) --}}
             <div class="hidden md:flex items-center space-x-4">
                 
-                {{-- Mini panier --}}
+                {{-- Mini panier (uniquement pour non-artisans) --}}
+                @if(!auth()->check() || !auth()->user()->hasRole('artisan'))
                 <div class="relative" @click.away="cartDropdownOpen = false">
                     <button @click="cartDropdownOpen = !cartDropdownOpen" 
                             class="relative p-2 text-gray-700 hover:text-amber-600 transition-colors">
@@ -127,6 +128,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
 
                 {{-- Authentification --}}
                 @auth

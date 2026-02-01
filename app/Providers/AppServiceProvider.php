@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Services\CartService;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Paginator::defaultView('vendor.pagination.tailwind');
+        Paginator::defaultSimpleView('vendor.pagination.simple-tailwind');
     }
 }

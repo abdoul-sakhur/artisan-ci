@@ -18,6 +18,11 @@ class ProductController extends Controller
     {
         $artisan = Auth::user()->artisan;
         
+        if (!$artisan) {
+            return redirect()->route('artisan.profile.create')
+                ->with('info', 'Veuillez d\'abord créer votre profil artisan.');
+        }
+        
         $query = $artisan->products()->with(['category', 'images']);
 
         // Filtres
@@ -59,6 +64,11 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $artisan = Auth::user()->artisan;
+        
+        if (!$artisan) {
+            return redirect()->route('artisan.profile.create')
+                ->with('info', 'Veuillez d\'abord créer votre profil artisan.');
+        }
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -151,6 +161,10 @@ class ProductController extends Controller
     private function authorizeProduct(Product $product)
     {
         $artisan = Auth::user()->artisan;
+        
+        if (!$artisan) {
+            abort(403, 'Profil artisan non trouvé.');
+        }
         
         if ($product->artisan_id !== $artisan->id) {
             abort(403, 'Accès non autorisé.');

@@ -19,7 +19,11 @@
                     </h3>
                     
                     <p class="mt-4 text-gray-600">
-                        Merci d'avoir créé votre boutique <strong>{{ $artisan->shop_name }}</strong> !
+                        @if($artisan && $artisan->shop_name)
+                            Merci d'avoir créé votre boutique <strong>{{ $artisan->shop_name }}</strong> !
+                        @else
+                            Merci d'avoir soumis votre demande !
+                        @endif
                     </p>
                     
                     <p class="mt-2 text-gray-600">
