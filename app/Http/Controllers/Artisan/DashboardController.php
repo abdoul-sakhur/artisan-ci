@@ -42,10 +42,12 @@ class DashboardController extends Controller
             ->take(5)
             ->get();
 
-        // Produits en rupture de stock
+        // Produits en rupture de stock (scopés correctement à l'artisan)
         $outOfStockProducts = $artisan->products()
-            ->where('quantity', 0)
-            ->orWhere('quantity', '<', 5)
+            ->where(function ($q) {
+                $q->where('quantity', 0)
+                  ->orWhere('quantity', '<', 5);
+            })
             ->take(5)
             ->get();
 

@@ -88,8 +88,9 @@ Route::middleware(['auth'])->group(function () {
 */
 
 Route::middleware(['auth', 'verified', 'role:client'])->group(function () {
+    // Redirection du tableau de bord client vers l'espace compte (page orange)
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return redirect()->route('front.client.account');
     })->name('dashboard');
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

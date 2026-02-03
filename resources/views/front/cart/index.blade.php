@@ -137,7 +137,7 @@
                     <div class="space-y-4 mb-6">
                         <div class="flex justify-between">
                             <span class="text-gray-600">Sous-total</span>
-                            <span class="font-medium">{{ number_format($total, 2, ',', ' ') }} FCFA</span>
+                            <span class="font-medium">{{ number_format($total, 0, ',', ' ') }} FCFA</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Livraison</span>
@@ -147,7 +147,7 @@
                             <div class="flex justify-between">
                                 <span class="text-lg font-semibold text-gray-900">Total</span>
                                 <span class="text-xl font-bold text-amber-600">
-                                    {{ number_format($total, 2, ',', ' ') }} FCFA
+                                    {{ number_format($total, 0, ',', ' ') }} FCFA
                                 </span>
                             </div>
                         </div>
@@ -157,7 +157,7 @@
                         @auth
                         <a href="{{ route('front.checkout.index') }}" 
                            class="w-full bg-amber-600 text-white text-center py-3 px-6 rounded-lg hover:bg-amber-700 transition-colors font-semibold">
-                            💳 Passer la commande
+                             Passer la commande
                         </a>
                         @else
                         <div class="text-center">

@@ -27,7 +27,7 @@
                     <div class="text-gray-600">Commandes passées</div>
                 </div>
                 <div class="bg-white rounded-xl shadow-sm p-6 text-center">
-                    <div class="text-3xl font-bold text-amber-600 mb-2">{{ number_format($totalSpent / 100, 0) }} FCFA</div>
+                    <div class="text-3xl font-bold text-amber-600 mb-2">{{ number_format($totalSpent, 0) }} FCFA</div>
                     <div class="text-gray-600">Total dépensé</div>
                 </div>
                 <div class="bg-white rounded-xl shadow-sm p-6 text-center">
@@ -214,20 +214,20 @@
                         Notre équipe support est là pour vous aider avec vos commandes et questions.
                     </p>
                     <div class="space-y-2">
-                        <a href="mailto:support@artisansdumaroc.com" 
+                        <a href="mailto:missa-art@gmail.com" 
                            class="block text-amber-600 hover:text-amber-700 text-sm font-medium">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-2 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <rect x="3" y="6" width="18" height="12" rx="2" />
                                 <path d="M3 8l9 6 9-6" />
                             </svg>
-                            <span>support@artisansdumaroc.com</span>
+                            <span>missa-art@gmail.com</span>
                         </a>
                         <div class="text-gray-600 text-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-2 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M6 2h12v20H6z" />
                                 <path d="M9 17h6" />
                             </svg>
-                            +212 5 22 XX XX XX
+                            +225 5 22 XX XX XX
                         </div>
                     </div>
                 </div>
@@ -253,7 +253,7 @@
                                 {{ ucfirst($lastOrder->status) }}
                             </span>
                         </div>
-                        <div><strong>Total :</strong> {{ number_format($lastOrder->total_amount / 100, 2, ',', ' ') }} FCFA</div>
+                        <div><strong>Total :</strong> {{ number_format($lastOrder->total_amount, 0) }} FCFA</div>
                     </div>
                     <a href="{{ route('front.orders.show', $lastOrder->order_number) }}" 
                        class="mt-3 inline-block text-amber-600 hover:text-amber-700 text-sm font-medium">

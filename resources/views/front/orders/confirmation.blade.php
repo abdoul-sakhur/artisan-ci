@@ -69,12 +69,12 @@
                             <h4 class="font-medium text-gray-900">{{ $item->product->name }}</h4>
                             <p class="text-sm text-gray-500">Par {{ $item->product->artisan->name }}</p>
                             <div class="text-sm text-gray-600 mt-1">
-                                Quantité: {{ $item->quantity }} × {{ number_format($item->price / 100, 2, ',', ' ') }} FCFA
+                                Quantité: {{ $item->quantity }} × {{ number_format($item->price, 0) }} FCFA
                             </div>
                         </div>
                         <div class="text-right">
                             <div class="font-semibold text-gray-900">
-                                {{ number_format($item->total / 100, 2, ',', ' ') }} FCFA
+                                {{ number_format($item->total, 0) }} FCFA
                             </div>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                 <div class="mt-6 pt-4 border-t border-gray-200">
                     <div class="flex justify-between items-center text-lg font-bold">
                         <span>Total payé</span>
-                        <span class="text-amber-600">{{ number_format($order->total_amount / 100, 2, ',', ' ') }} FCFA</span>
+                        <span class="text-amber-600">{{ number_format($order->total_amount, 0) }} FCFA</span>
                     </div>
                 </div>
                 

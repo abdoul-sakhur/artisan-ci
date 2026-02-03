@@ -106,7 +106,7 @@ class Product extends Model
     // Accessors
     public function getFormattedPriceAttribute()
     {
-        return number_format($this->price, 2, ',', ' ') . ' FCFA';
+        return number_format($this->price, 0, ',', ' ') . ' FCFA';
     }
 
     public function getStockQuantityAttribute()

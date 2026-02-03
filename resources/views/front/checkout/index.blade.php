@@ -125,7 +125,7 @@
                     <div class="space-y-2 mb-6 pt-4 border-t">
                         <div class="flex justify-between text-sm">
                             <span class="text-gray-600">Sous-total</span>
-                            <span class="font-medium">{{ number_format($total, 2, ',', ' ') }} FCFA</span>
+                            <span class="font-medium">{{ number_format($total, 0, ',', ' ') }} FCFA</span>
                         </div>
                         <div class="flex justify-between text-sm">
                             <span class="text-gray-600">Livraison</span>
@@ -133,7 +133,7 @@
                         </div>
                         <div class="flex justify-between text-lg font-bold pt-2 border-t">
                             <span class="text-gray-900">Total</span>
-                            <span class="text-amber-600">{{ number_format($total, 2, ',', ' ') }} FCFA</span>
+                            <span class="text-amber-600">{{ number_format($total, 0, ',', ' ') }} FCFA</span>
                         </div>
                     </div>
 

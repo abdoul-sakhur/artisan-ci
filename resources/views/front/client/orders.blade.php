@@ -79,7 +79,7 @@
                                 </span>
                             </div>
                             <div class="text-lg font-bold text-amber-600">
-                                {{ number_format($order->total_amount / 100, 2, ',', ' ') }} FCFA
+                                {{ number_format($order->total_amount, 0) }} FCFA
                             </div>
                         </div>
                     </div>
@@ -108,11 +108,11 @@
                                         {{ $item->product->name ?? 'Produit supprimé' }}
                                     </h5>
                                     <p class="text-xs text-gray-500">
-                                        Quantité: {{ $item->quantity }} × {{ number_format($item->price / 100, 2, ',', ' ') }} FCFA
+                                        Quantité: {{ $item->quantity }} × {{ number_format($item->price, 0) }} FCFA
                                     </p>
                                 </div>
                                 <div class="text-sm font-semibold text-gray-900">
-                                    {{ number_format($item->total / 100, 2, ',', ' ') }} FCFA
+                                    {{ number_format($item->total, 0) }} FCFA
                                 </div>
                             </div>
                             @endforeach

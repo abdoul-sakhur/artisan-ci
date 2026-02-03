@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Artisan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+ 
 
 class ArtisanController extends Controller
 {

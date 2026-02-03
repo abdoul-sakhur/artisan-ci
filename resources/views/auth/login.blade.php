@@ -44,4 +44,15 @@
             </x-primary-button>
         </div>
     </form>
+
+    <!-- Hint: comptes client vs artisan -->
+    <div class="mt-6 p-4 bg-gray-50 border rounded-lg text-sm text-gray-700">
+        <p class="mb-2"><strong>Pas encore de compte ?</strong> 
+            <a href="{{ route('register') }}" class="text-amber-600 underline">Créer un compte client</a>
+        </p>
+        <p><strong>Vous êtes artisan ?</strong> 
+            <a href="{{ route('register', ['type' => 'artisan']) }}" class="text-amber-600 underline">Créer un compte artisan</a>
+            pour vendre vos créations.
+        </p>
+    </div>
 </x-guest-layout>

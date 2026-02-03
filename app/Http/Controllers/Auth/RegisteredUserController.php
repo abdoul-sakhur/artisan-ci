@@ -33,6 +33,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'user_type' => ['nullable', 'in:client,artisan'],
         ]);
 
         $user = User::create([
@@ -41,12 +42,18 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // Assigner automatiquement le rôle "client" aux nouveaux inscrits
-        $user->assignRole('client');
+        // Assigner le rôle choisi (par défaut: client)
+        $role = $request->input('user_type', 'client');
+        $user->assignRole($role);
 
         event(new Registered($user));
 
         Auth::login($user);
+
+        // Redirection selon le type
+        if ($role === 'artisan') {
+            return redirect()->route('artisan.profile.create');
+        }
 
         return redirect(route('dashboard', absolute: false));
     }
